@@ -7,7 +7,7 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import createData from "../../utils/CreateData";
-import Row from "./TableRow";
+import Row from "./Row";
 import { BookType } from "../../interfaces/Book";
 
 function BooksList(books: { books: BookType[] }) {
@@ -51,7 +51,7 @@ function BooksList(books: { books: BookType[] }) {
           </TableHead>
           <TableBody>
             {rows.map((row) => (
-              <Row key={row.id} row={row} />
+              <Row key={row.id} row={row}/>
             ))}
           </TableBody>
         </Table>

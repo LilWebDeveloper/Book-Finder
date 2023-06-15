@@ -3,7 +3,6 @@ import {
   Collapse,
   IconButton,
   Table,
-  TableBody,
   TableCell,
   TableHead,
   TableRow,
@@ -14,6 +13,7 @@ import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import capitalizeFirst from "../../utils/CapitalizeFirst";
 import { Fragment, useState } from "react";
 import createData from "../../utils/CreateData";
+import ExtendedRow from "./ExtendedRow";
 
 function Row(props: { row: ReturnType<typeof createData> }) {
   const { row } = props;
@@ -30,6 +30,7 @@ function Row(props: { row: ReturnType<typeof createData> }) {
   return (
     <Fragment>
       <TableRow
+        role={"rows"}
         sx={{
           backgroundColor: bgColor,
           "& > *": { borderBottom: "unset" },
@@ -83,22 +84,7 @@ function Row(props: { row: ReturnType<typeof createData> }) {
                     </TableCell>
                   </TableRow>
                 </TableHead>
-                <TableBody>
-                  <TableRow key={row.id}>
-                    <TableCell component="th" scope="row">
-                      {row.id}
-                    </TableCell>
-                    <TableCell>{row.publishedDate}</TableCell>
-                    <TableCell align="left">
-                      {row.authors.map((author) => (
-                        <p key={author}>{author} </p>
-                      ))}
-                    </TableCell>
-                    <TableCell align="left">
-                      {row.price} {row.currencyCode}
-                    </TableCell>
-                  </TableRow>
-                </TableBody>
+                <ExtendedRow row={row}/>
               </Table>
             </Box>
           </Collapse>
