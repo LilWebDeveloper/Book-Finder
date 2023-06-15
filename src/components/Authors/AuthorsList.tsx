@@ -6,7 +6,6 @@ import {
   ImageListItemBar,
   ListSubheader,
 } from "@mui/material";
-import InfoIcon from "@mui/icons-material/Info";
 import classes from "../../styles/Authors.module.css";
 import BooksTable from "../BooksList/BooksTable";
 import { LoadingWrapper } from "../../styles/LoadingWrapper";
@@ -25,7 +24,7 @@ function AuthorList(props: BreadcrumbType) {
         <ListSubheader component="div">Select Author</ListSubheader>
       </ImageListItem>
       <ImageList
-        sx={{ maxWidth: { sm: "90%", md: "50%" }, height: "50vh", m: "auto" }}
+        className={classes.imgList}
         cols={4}
         role={"imgDisplay"}
       >
@@ -44,7 +43,7 @@ function AuthorList(props: BreadcrumbType) {
                   sx={{ color: "rgba(255, 255, 255, 0.54)", height: 100 }}
                   aria-label={`info about ${author.fullName}`}
                 >
-                  <InfoIcon />
+                  
                 </IconButton>
               }
             />
