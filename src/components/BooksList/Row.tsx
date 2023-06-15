@@ -14,6 +14,7 @@ import capitalizeFirst from "../../utils/CapitalizeFirst";
 import { Fragment, useState } from "react";
 import createData from "../../utils/CreateData";
 import ExtendedRow from "./ExtendedRow";
+import classes from '../../styles/Row.module.css'
 
 function Row(props: { row: ReturnType<typeof createData> }) {
   const { row } = props;
@@ -50,7 +51,7 @@ function Row(props: { row: ReturnType<typeof createData> }) {
         </TableCell>
         <TableCell align="left">
           {row.img ? (
-            <img src={row.img} alt={row.title} height={75} />
+            <img className={classes.img} src={row.img} alt={row.title} height={60} />
           ) : (
             "No Cover"
           )}

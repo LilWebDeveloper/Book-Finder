@@ -124,6 +124,12 @@ function NavBar() {
                 Books List
               </Button>
               <Button
+                onClick={handleNavigate("authors")}
+                sx={{ my: 2, color: "white", display: "block" }}
+              >
+                Authors List
+              </Button>
+              <Button
                 onClick={handleNavigate("aboutme")}
                 sx={{ my: 2, color: "white", display: "block" }}
               >

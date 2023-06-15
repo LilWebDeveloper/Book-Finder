@@ -10,7 +10,7 @@ import createData from "../../utils/CreateData";
 import Row from "./Row";
 import { BookType } from "../../interfaces/Book";
 
-function BooksList(books: { books: BookType[] }) {
+function BooksTable(books: { books: BookType[] }) {
   const items = books.books;
 
   if (items.length !== 0) {
@@ -59,10 +59,10 @@ function BooksList(books: { books: BookType[] }) {
     );
   } else
     return (
-      <Box sx={{ textAlign: "center", mt: "25vh" }}>
+      <Box sx={{ textAlign: "center", mt: "15vh" }}>
         <h3>Table of books will be displayed here :)</h3>
       </Box>
     );
 }
 
-export default BooksList;
+export default BooksTable;

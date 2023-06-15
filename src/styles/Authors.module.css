@@ -1,0 +1,14 @@
+.title{
+    width: 50%;
+    text-align: center;
+    margin: auto;
+    margin-bottom: 1vh;
+    margin-top: 2vh;
+}
+.item{
+    margin: 1vh;
+}
+
+.item:hover{
+    border: 2px solid lightskyblue;
+}
