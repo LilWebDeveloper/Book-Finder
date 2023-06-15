@@ -1,18 +1,47 @@
-import { Breadcrumbs, Link, Typography } from "@mui/material";
+import { Breadcrumbs, CircularProgress, Link, Typography } from "@mui/material";
 import HomeIcon from "@mui/icons-material/Home";
 import PersonIcon from "@mui/icons-material/Person";
-import PeopleIcon from '@mui/icons-material/People';
-import AuthorList from "../components/Authors/AuthorList";
+import PeopleIcon from "@mui/icons-material/People";
+import AuthorList from "../components/Authors/AuthorsList";
+import { LoadingWrapper } from "../styles/LoadingWrapper";
 import { useState } from "react";
+import axios from "axios";
+import { json } from "react-router-dom";
+import useDebounce from "../utils/debounceHooks";
 
 function AuthorsPage() {
-  const [breadcrumb, setBreadcrumb] = useState("");
+  const [books, setBooks] = useState([]);
+  const [isLoading, setLoading] = useState(false);
+  const [author, setAuthor] = useState("");
 
-  const breadcrumbHandler = (author: string): void => {
-    setBreadcrumb(author);
+  const authorHandler = (author: string): void => {
+    setAuthor(author);
   };
 
-  if (breadcrumb) {
+  const prepareSearchQuery = (query: string) => {
+    const url = `https://www.googleapis.com/books/v1/volumes?q=inauthor:${query}&maxResults=8&key=AIzaSyApptoYHF7DfR6_GRB5gHZher5Ms72uPek`;
+
+    return encodeURI(url);
+  };
+
+  const searchData = async (): Promise<void> => {
+    setLoading(true);
+    const URL = prepareSearchQuery(author);
+
+    const response = await axios.get(URL).catch((err) => {
+      json({ message: "Could not fetch Books", status: 500 });
+    });
+
+    if (response) {
+      setBooks(response.data.items);
+    }
+
+    setLoading(false);
+  };
+
+  useDebounce(author, 500, searchData);
+
+  if (author) {
     return (
       <>
         <div>
@@ -43,11 +72,11 @@ function AuthorsPage() {
               color="rgb(192, 192, 192)"
             >
               <PersonIcon sx={{ mr: 0.5 }} fontSize="inherit" />
-              {breadcrumb}
+              {author}
             </Typography>
           </Breadcrumbs>
         </div>
-        <AuthorList breadcrumb={breadcrumbHandler} />
+        <AuthorList books={books} breadcrumb={authorHandler} />
       </>
     );
   } else {
@@ -76,7 +105,12 @@ function AuthorsPage() {
             </Typography>
           </Breadcrumbs>
         </div>
-        <AuthorList breadcrumb={breadcrumbHandler} />
+        <AuthorList books={books} breadcrumb={authorHandler} />
+        {isLoading && (
+          <LoadingWrapper>
+            <CircularProgress />
+          </LoadingWrapper>
+        )}
       </>
     );
   }
