@@ -19,21 +19,22 @@ interface BreadcrumbType {
 }
 
 function AuthorList(props: BreadcrumbType) {
-  
-
-  
   return (
     <>
       <ImageListItem className={classes.title} key="Subheader">
         <ListSubheader component="div">Select Author</ListSubheader>
       </ImageListItem>
       <ImageList
-        sx={{ maxWidth: {sm: '90%', md: '50%'}, height: "50vh", m: "auto" }}
+        sx={{ maxWidth: { sm: "90%", md: "50%" }, height: "50vh", m: "auto" }}
         cols={4}
         role={"imgDisplay"}
       >
         {authors.map((author) => (
-          <ImageListItem className={classes.item} key={author.img}>
+          <ImageListItem
+            className={classes.item}
+            key={author.img}
+            onClick={() => props.breadcrumb(author.title)}
+          >
             <img src={`${author.img}`} alt={author.title} loading="lazy" />
             <ImageListItemBar
               title={author.title}
@@ -41,7 +42,6 @@ function AuthorList(props: BreadcrumbType) {
                 <IconButton
                   sx={{ color: "rgba(255, 255, 255, 0.54)" }}
                   aria-label={`info about ${author.title}`}
-                  onClick={() => props.breadcrumb(author.title)}
                 >
                   <InfoIcon />
                 </IconButton>
@@ -52,10 +52,10 @@ function AuthorList(props: BreadcrumbType) {
       </ImageList>
       <BooksTable books={props.books} />
       {props.isLoading && (
-          <LoadingWrapper>
-            <CircularProgress />
-          </LoadingWrapper>
-        )}
+        <LoadingWrapper>
+          <CircularProgress />
+        </LoadingWrapper>
+      )}
     </>
   );
 }
