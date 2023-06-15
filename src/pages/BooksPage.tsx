@@ -43,7 +43,7 @@ function BooksPage() {
   useDebounce(bookTitle, 500, searchData);
 
   return (
-    <div>
+    <>
       <div>
         <Breadcrumbs
           sx={{ color: "rgb(192, 192, 192)", mt: "1vh" }}
@@ -76,7 +76,7 @@ function BooksPage() {
           <CircularProgress />
         </LoadingWrapper>
       )}
-    </div>
+    </>
   );
 }
 

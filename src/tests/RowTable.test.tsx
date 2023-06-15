@@ -1,35 +1,25 @@
-import { screen, render } from "@testing-library/react";
-import {
-  createBrowserRouter,
-  createRoutesFromElements,
-  Route,
-  RouterProvider,
-} from "react-router-dom";
+import { render, screen } from "@testing-library/react";
 import Row from "../components/BooksList/Row";
+import createData from "../utils/CreateData";
 
-const row = {
-  id: "1",
-  title: "Lalka",
-  country: "PL",
-  subtitle: "No Subtitle",
-  publishedDate: "1985",
-  authors: ["Bolesław Prus"],
-  img: "No Cover",
-  price: "15.5",
-  currencyCode: "PLN",
-};
+test("Row renders the data correctly", () => {
+  const row = createData(
+    "1",
+    "Book Title",
+    "Country",
+    "Subtitle",
+    "2023-06-15",
+    ["Author 1", "Author 2"],
+    "image.jpg",
+    "9.99",
+    "USD"
+  );
 
-const router = createBrowserRouter(
-  createRoutesFromElements(
-    <Route path="/" element={<Row key={row.id} row={row} />}></Route>
-  )
-);
+  render(<Row row={row} />);
 
-test("Render rows table", async () => {
-  render(<RouterProvider router={router} />);
 
-  const tableBodyElement = screen.getByRole("rows");
-  expect(tableBodyElement).toHaveTextContent(row.title);
-  expect(tableBodyElement).toHaveTextContent(row.subtitle);
-  expect(tableBodyElement).toHaveTextContent(row.country);
+  expect(screen.getByText(row.title)).toBeInTheDocument();
+  expect(screen.getByText(row.subtitle)).toBeInTheDocument();
+  expect(screen.getByText(row.country)).toBeInTheDocument();
+  
 });

@@ -1,37 +1,26 @@
-import { screen, render } from "@testing-library/react";
-import {
-  createBrowserRouter,
-  createRoutesFromElements,
-  Route,
-  RouterProvider,
-} from "react-router-dom";
+import { render, screen } from "@testing-library/react";
 import ExtendedRow from "../components/BooksList/ExtendedRow";
+import createData from "../utils/CreateData";
 
-const row = {
-  id: "1",
-  title: "Lalka",
-  country: "PL",
-  subtitle: "No Subtitle",
-  publishedDate: "1985",
-  authors: ["Bolesław Prus"],
-  img: "No Cover",
-  price: "15.5",
-  currencyCode: "PLN",
-};
+test("ExtendedRow renders the data correctly", () => {
+  const row = createData(
+    "1",
+    "Book Title",
+    "Country",
+    "Subtitle",
+    "2023-06-15",
+    ["Author 1", "Author 2"],
+    "image.jpg",
+    "9.99",
+    "USD"
+  );
 
-const router = createBrowserRouter(
-  createRoutesFromElements(
-    <Route path="/" element={<ExtendedRow row={row} />}></Route>
-  )
-);
+  render(<ExtendedRow row={row} />);
 
-test("Render extended rows table", async () => {
-  render(<RouterProvider router={router} />);
-
-  const tableBodyElement = screen.getByRole("extended-rows");
-  expect(tableBodyElement).toHaveTextContent(row.id);
-  expect(tableBodyElement).toHaveTextContent(row.publishedDate);
-  expect(tableBodyElement).toHaveTextContent(row.authors[0]);
-  expect(tableBodyElement).toHaveTextContent(row.price);
-  expect(tableBodyElement).toHaveTextContent(row.currencyCode);
+  expect(screen.getByText(row.publishedDate)).toBeInTheDocument();
+  expect(screen.getByText(row.authors[0])).toBeInTheDocument();
+  expect(screen.getByText(row.authors[1])).toBeInTheDocument();
+  expect(
+    screen.getByText(`${row.price} ${row.currencyCode}`)
+  ).toBeInTheDocument();
 });
