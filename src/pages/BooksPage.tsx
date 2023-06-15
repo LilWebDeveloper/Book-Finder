@@ -20,7 +20,7 @@ function BooksPage() {
   };
 
   const prepareSearchQuery = (query: string) => {
-    const url = `https://www.googleapis.com/books/v1/volumes?q=intitle:${query}&maxResults=8&key=AIzaSyApptoYHF7DfR6_GRB5gHZher5Ms72uPek`;
+    const url = `https://www.googleapis.com/books/v1/volumes?q=intitle:${query}&maxResults=8&key=${process.env.REACT_APP_GOOGLE_BOOKS}`;
 
     return encodeURI(url);
   };
