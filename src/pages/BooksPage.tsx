@@ -8,6 +8,7 @@ import { LoadingWrapper } from "../styles/LoadingWrapper";
 import { json } from "react-router-dom";
 import useDebounce from "../utils/debounceHooks";
 import axios from 'axios'
+import BooksList from "../components/BooksList/BooksList";
 
 function BooksPage() {
   const [bookTitle, setBookTitle] = useState("");
@@ -69,6 +70,7 @@ function BooksPage() {
       <div className={classes.searchBar}>
         <SearchBar search={search} />
       </div>
+      <BooksList books={books} />
       {isLoading && (
         <LoadingWrapper>
           <CircularProgress />
