@@ -33,15 +33,16 @@ function AuthorList(props: BreadcrumbType) {
           <ImageListItem
             className={classes.item}
             key={author.img}
-            onClick={() => props.breadcrumb(author.title)}
+            onClick={() => props.breadcrumb(author.fullName)}
           >
-            <img src={`${author.img}`} alt={author.title} loading="lazy" />
+            <img src={`${author.img}`} alt={author.fullName} loading="lazy" />
             <ImageListItemBar
-              title={author.title}
+              title={author.name}
+              subtitle={author.lastName}
               actionIcon={
                 <IconButton
-                  sx={{ color: "rgba(255, 255, 255, 0.54)" }}
-                  aria-label={`info about ${author.title}`}
+                  sx={{ color: "rgba(255, 255, 255, 0.54)", height: 100 }}
+                  aria-label={`info about ${author.fullName}`}
                 >
                   <InfoIcon />
                 </IconButton>
@@ -63,19 +64,27 @@ function AuthorList(props: BreadcrumbType) {
 export const authors = [
   {
     img: "https://t3.gstatic.com/licensed-image?q=tbn:ANd9GcQDY2EBrfJ6oygfb3rSljgdk1aHee5aK1b0RTDBeJOrW13fAoX3H7-GYa7bTs7BIR44",
-    title: "Adam Mickiewicz",
+    name: "Adam",
+    lastName: "Mickiewicz",
+    fullName: 'Adam Mickiewicz'
   },
   {
     img: "https://upload.wikimedia.org/wikipedia/commons/1/17/Juliusz_S%C5%82owacki_1.PNG",
-    title: "Juliusz Słowacki",
+    name: "Juliusz",
+    lastName: "Słowacki",
+    fullName: "Juliusz Słowacki"
   },
   {
     img: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cb/Zygmunt_Krasi%C5%84ski_portrait.jpg/1200px-Zygmunt_Krasi%C5%84ski_portrait.jpg",
-    title: "Zygmunt Krasiński",
+    name: "Zygmunt",
+    lastName: "Krasiński",
+    fullName: "Zygmunt Krasiński"
   },
   {
     img: "https://upload.wikimedia.org/wikipedia/commons/b/bd/Cyprian_Kamil_Norwid_foto.jpg",
-    title: "Cyprian Norwid",
+    name: "Cyprian",
+    lastName: "Norwid",
+    fullName: "Cyprian Norwid",
   },
 ];
 
