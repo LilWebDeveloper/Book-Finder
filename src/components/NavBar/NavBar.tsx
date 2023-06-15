@@ -90,6 +90,9 @@ function NavBar() {
                 <MenuItem onClick={handleNavigate("books")}>
                   <Typography textAlign="center">Books List</Typography>
                 </MenuItem>
+                <MenuItem onClick={handleNavigate("authors")}>
+                  <Typography textAlign="center">Authors List</Typography>
+                </MenuItem>
                 <MenuItem onClick={handleNavigate("aboutme")}>
                   <Typography textAlign="center">About me</Typography>
                 </MenuItem>

@@ -28,7 +28,7 @@ function AuthorList(props: BreadcrumbType) {
         <ListSubheader component="div">Select Author</ListSubheader>
       </ImageListItem>
       <ImageList
-        sx={{ width: "60%", height: "50vh", m: "auto" }}
+        sx={{ maxWidth: {sm: '90%', md: '50%'}, height: "50vh", m: "auto" }}
         cols={4}
         role={"imgDisplay"}
       >
