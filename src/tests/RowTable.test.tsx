@@ -15,11 +15,15 @@ test("Row renders the data correctly", () => {
     "USD"
   );
 
-  render(<Row row={row} />);
-
+  render(
+    <table>
+      <tbody>
+        <Row row={row} />
+      </tbody>
+    </table>
+  );
 
   expect(screen.getByText(row.title)).toBeInTheDocument();
   expect(screen.getByText(row.subtitle)).toBeInTheDocument();
   expect(screen.getByText(row.country)).toBeInTheDocument();
-  
 });

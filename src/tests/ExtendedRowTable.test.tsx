@@ -1,6 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import ExtendedRow from "../components/BooksList/ExtendedRow";
 import createData from "../utils/CreateData";
+import { Table, TableBody } from "@mui/material";
 
 test("ExtendedRow renders the data correctly", () => {
   const row = createData(
@@ -15,7 +16,11 @@ test("ExtendedRow renders the data correctly", () => {
     "USD"
   );
 
-  render(<ExtendedRow row={row} />);
+  render(
+    <Table>
+        <ExtendedRow row={row} />
+    </Table>
+  );
 
   expect(screen.getByText(row.publishedDate)).toBeInTheDocument();
   expect(screen.getByText(row.authors[0])).toBeInTheDocument();
