@@ -1,4 +1,5 @@
 import {
+  CircularProgress,
   IconButton,
   ImageList,
   ImageListItem,
@@ -8,13 +9,19 @@ import {
 import InfoIcon from "@mui/icons-material/Info";
 import classes from "../../styles/Authors.module.css";
 import BooksTable from "../BooksList/BooksTable";
+import { LoadingWrapper } from "../../styles/LoadingWrapper";
+import { BookType } from "../../interfaces/Book";
 
 interface BreadcrumbType {
   breadcrumb: (author: string) => void;
-  books: any;
+  books: BookType[];
+  isLoading: boolean;
 }
 
 function AuthorList(props: BreadcrumbType) {
+  
+
+  
   return (
     <>
       <ImageListItem className={classes.title} key="Subheader">
@@ -44,6 +51,11 @@ function AuthorList(props: BreadcrumbType) {
         ))}
       </ImageList>
       <BooksTable books={props.books} />
+      {props.isLoading && (
+          <LoadingWrapper>
+            <CircularProgress />
+          </LoadingWrapper>
+        )}
     </>
   );
 }

@@ -1,9 +1,8 @@
-import { Breadcrumbs, CircularProgress, Link, Typography } from "@mui/material";
+import { Breadcrumbs, Link, Typography } from "@mui/material";
 import HomeIcon from "@mui/icons-material/Home";
 import PersonIcon from "@mui/icons-material/Person";
 import PeopleIcon from "@mui/icons-material/People";
 import AuthorList from "../components/Authors/AuthorsList";
-import { LoadingWrapper } from "../styles/LoadingWrapper";
 import { useState } from "react";
 import axios from "axios";
 import { json } from "react-router-dom";
@@ -76,7 +75,7 @@ function AuthorsPage() {
             </Typography>
           </Breadcrumbs>
         </div>
-        <AuthorList books={books} breadcrumb={authorHandler} />
+        <AuthorList isLoading={isLoading} books={books} breadcrumb={authorHandler} />
       </>
     );
   } else {
@@ -105,12 +104,7 @@ function AuthorsPage() {
             </Typography>
           </Breadcrumbs>
         </div>
-        <AuthorList books={books} breadcrumb={authorHandler} />
-        {isLoading && (
-          <LoadingWrapper>
-            <CircularProgress />
-          </LoadingWrapper>
-        )}
+        <AuthorList isLoading={isLoading} books={books} breadcrumb={authorHandler} />
       </>
     );
   }

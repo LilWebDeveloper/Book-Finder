@@ -5,7 +5,7 @@ test("AuthorList renders authors correctly", () => {
   const mockBreadcrumb = jest.fn();
   const mockBooks: never[] = [];
 
-  render(<AuthorList breadcrumb={mockBreadcrumb} books={mockBooks} />);
+  render(<AuthorList isLoading={false} breadcrumb={mockBreadcrumb} books={mockBooks} />);
 
   for (const author of authors) {
     const imgElement = screen.getByAltText(author.title);
