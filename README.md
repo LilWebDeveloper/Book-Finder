@@ -1,46 +1,20 @@
-# Getting Started with Create React App
+# BookFinder - Google Books API
+## Summary
+BookFinder is a user-friendly website that utilizes the Google Books API to help you search and discover books. With a vast database of titles, it allows you to explore a wide range of genres, authors, and subjects. BookFinder provides a simple and intuitive interface, enabling you to easily enter book titles to initiate your search. The website returns comprehensive results, displaying relevant book details such as the cover image, synopsis, publication information. Whether you're a bookworm or simply seeking a specific title, BookFinder serves as a valuable tool to explore and find the perfect book for your reading pleasure.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Key Features
+* Use Google Books API
+* Search books by title
+* Search books by author
 
-## Available Scripts
+## Technologies Used
+* Front-end: HTML, CSS, JavaScript, React, Material UI
+* API: Google Books
+  
+# Images
 
-In the project directory, you can run:
+## Books search by title
+![](img/BooksList.png)
 
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Books search by author
+![](img/AuthorsList.png)
